@@ -42,7 +42,7 @@
           <div v-if="comic.prices.length === 0">Preço não disponível</div>
           <div v-else>
             <button v-for="price in comic.prices" :key="price.type" class="buy-button">
-              {{ price.type }}: {{ formatCurrency(price.price) }}
+              {{ formatCurrency(price.price) }}
             </button>
           </div>
         </div>

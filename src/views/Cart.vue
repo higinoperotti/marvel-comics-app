@@ -42,7 +42,6 @@ export default {
       if (item.quantity > 1) {
         this.$store.dispatch('decreaseQuantity', item.id);
       } else {
-        // Caso a quantidade seja 1, remova o item do carrinho
         this.removeFromCart(item.id);
       }
     },
@@ -50,7 +49,6 @@ export default {
       return this.cartItems.reduce((total, item) => total + this.itemTotal(item), 0);
     },
     calculateTotal() {
-      // Pode adicionar taxas ou descontos aqui se necessário
       return this.calculateSubtotal();
     },
     itemTotal(item) {
@@ -61,8 +59,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Adicione estilos conforme necessário */
-
 .cart {
   max-width: 800px;
   margin: 0 auto;

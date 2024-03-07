@@ -38,8 +38,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Adicione estilos conforme necessário */
-
 .navbar {
   background-color: #3498db;
   padding: 15px 0;
@@ -98,7 +96,7 @@ export default {
     position: absolute;
     background-color: #3498db;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    top: 60px; /* Altura da barra de navegação */
+    top: 60px;
     left: 0;
     padding: 15px;
 

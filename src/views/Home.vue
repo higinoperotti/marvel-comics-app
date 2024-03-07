@@ -53,7 +53,6 @@ export default {
 
   computed: {
     filteredComics() {
-      // Filtrar quadrinhos com base no termo de pesquisa
       const normalizedSearch = this.searchTerm.toLowerCase().trim();
       return this.comics.filter(comic =>
         comic.title.toLowerCase().includes(normalizedSearch)
@@ -67,7 +66,7 @@ export default {
   methods: {
     async fetchComics() {
       try {
-        const response = await marvelService.getComics();
+        const response = await marvelService.getComics(this.searchTerm);
         this.comics = response.data.data.results;
         this.comics.forEach((item) => {
           item.quantity = 0
@@ -77,10 +76,22 @@ export default {
         console.error('Erro ao buscar quadrinhos:', error);
       }
     },
-    searchComics() {
-      // Atualizar a lista de quadrinhos com base no termo de pesquisa
-      // Chamar a API ou filtrar localmente, dependendo da sua implementação
-      // Exemplo: this.comics = await fetchComicsWithSearchTerm(this.searchTerm);
+    async searchComics() {
+      if (this.searchTerm) {
+        try {
+          const response = await marvelService.getComics(this.searchTerm);
+          this.comics = response.data.data.results;
+          this.comics.forEach((item) => {
+            item.quantity = 0
+            item.price = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+          });
+        } catch (error) {
+          console.error('Erro ao buscar quadrinhos:', error);
+        }
+      } else {
+        this.fetchComics();
+      }
+      
     },
     showDetails(comicId) {
       this.$router.push(`/details/${comicId}`);

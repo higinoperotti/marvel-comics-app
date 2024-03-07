@@ -3,7 +3,7 @@
     <section class="about-section">
       <div class="about-content">
         <h2>Objetivo</h2>
-        <p>Nossa aplicação Vue.js foi criada para proporcionar uma experiência única na exploração dos incríveis quadrinhos da Marvel. Utilizando a API oficial da Marvel, oferecemos informações atualizadas sobre quadrinhos, criadores, personagens e muito mais.</p>
+        <p>Nossa aplicação Vue.js foi criada para explorar os quadrinhos da Marvel. Utilizando a API oficial da Marvel, oferecemos informações atualizadas sobre quadrinhos, criadores, personagens e muito mais.</p>
       </div>
       <img src="@/assets/comics.jpeg" alt="Ilustração de quadrinhos" class="about-image" />
     </section>
