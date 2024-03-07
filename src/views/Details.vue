@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import marvelService from '@/services/marvelService';
+import axiosService from '@/services/axiosService';
 
 export default {
   data() {
@@ -67,7 +67,7 @@ export default {
     async fetchComicDetails() {
       try {
         const comicId = this.$route.params.id;
-        const response = await marvelService.getComicDetails(comicId);
+        const response = await axiosService.getComicDetails(comicId);
         this.comic = response.data.data.results[0];
       } catch (error) {
         console.error('Erro ao buscar detalhes do quadrinho:', error);
@@ -185,3 +185,4 @@ export default {
   background-color: #218c53;
 }
 </style>
+@/services/axiosService

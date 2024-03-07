@@ -13,7 +13,7 @@
         type="text"
         id="search"
         v-model="searchTerm"
-        @input="searchComics"
+        @input="searchItem"
         placeholder="Digite o nome do quadrinho"
       />
     </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import marvelService from '@/services/marvelService';
+import axiosService from '@/services/axiosService';
 import ComicCard from '@/components/ComicCard.vue';
 
 export default {
@@ -66,7 +66,7 @@ export default {
   methods: {
     async fetchComics() {
       try {
-        const response = await marvelService.getComics(this.searchTerm);
+        const response = await axiosService.getComics(this.searchTerm);
         this.comics = response.data.data.results;
         this.comics.forEach((item) => {
           item.quantity = 0
@@ -76,10 +76,10 @@ export default {
         console.error('Erro ao buscar quadrinhos:', error);
       }
     },
-    async searchComics() {
+    async searchItem() {
       if (this.searchTerm) {
         try {
-          const response = await marvelService.getComics(this.searchTerm);
+          const response = await axiosService.searchComics(this.searchTerm);
           this.comics = response.data.data.results;
           this.comics.forEach((item) => {
             item.quantity = 0
@@ -181,4 +181,4 @@ button:hover {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
-</style>
+</style>@/services/axiosService

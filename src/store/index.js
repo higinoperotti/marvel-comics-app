@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import marvelService from '../services/marvelService';
+import axiosService from '../services/axiosService';
 
 export default createStore({
   state: {
@@ -49,12 +49,12 @@ export default createStore({
   },
   actions: {
     fetchComics({ commit }) {
-      marvelService.getComics().then((response) => {
+      axiosService.getComics().then((response) => {
         commit('setComics', response.data.data.results);
       });
     },
     fetchComicDetails({ commit }, comicId) {
-      marvelService.getComicDetails(comicId).then((response) => {
+      axiosService.getComicDetails(comicId).then((response) => {
         commit('setComicDetails', response.data.data.results[0]);
       });
     },
